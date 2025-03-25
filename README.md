@@ -19,22 +19,34 @@ Phase 1 focuses on the basic chat functionality and asynchronous communication.
 
 ---
 
-## How to Run
+# How to Run the Chat System
 
-### 1. Run the Server
+### Requirements
+
+- Python 3 installed (no extra libraries needed)
+- SQLite3 (already built-in with Python)
+- Command-line or terminal access
+
+---
+
+### 1. Start the Server
+
+Open a terminal and navigate to your project folder:
+
 ```bash
+cd EC530-chat\ project
 python server.py
--You should see: Server is listening on 0.0.0.0:56789
-### 1. Run the Client in a seprate terminal
-```bash
-Python client.py
+- You'll see: Server is listening on 0.0.0.0:56789
+Then, in a new terminal Start the Client
+run the client it will ask : Enter your username:
+Then start typing messages. Messages will appear like:
 
-You’ll be prompted for a username:
-Enter your username:
-Then you can begin chatting:
-Example
-[Ali]: Hello!
-[Sara]: Hi Ali!
+[Server} | 03:45 PM]: Hello!
+[Sara | 03:46 PM]: Hey Ali!
 
 
-
+-- Chat history is stored in python view_db.py
+example: 
+(1, 'Chi', 'Hello!', '2025-03-25 15:42:10')
+(2, 'Sara', 'Hi Chi!', '2025-03-25 15:43:01')
+(1, 'Server', 'Hi!', '2025-03-25 15:42:10')
