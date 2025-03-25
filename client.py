@@ -1,6 +1,7 @@
 import socket
 import threading
 import sys
+from datetime import datetime
 
 # Ask for username
 username = input("Enter your username: ")
@@ -9,8 +10,8 @@ username = input("Enter your username: ")
 SERVER_IP = '127.0.0.1'
 PORT = 56789  # Must match the server's port
 
+# Function to receive messages from the server
 def receive_messages(client_socket):
-    """Continuously receives messages from the server and displays them."""
     while True:
         try:
             message = client_socket.recv(1024).decode('utf-8')
@@ -20,23 +21,26 @@ def receive_messages(client_socket):
         except:
             break
 
+# Function to start the client
 def start_client():
-    """Connects to the server and starts sending messages."""
     try:
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((SERVER_IP, PORT))
 
+        # Start background thread to receive messages
         threading.Thread(target=receive_messages, args=(client_socket,), daemon=True).start()
 
         print("Connected to chat. Type your message and press Enter to send.")
         print("Type 'exit' to leave the chat.")
 
+        # Send messages
         while True:
             message = sys.stdin.readline().strip()
             if message.lower() == "exit":
                 print("Disconnecting...")
                 break
-            full_message = f"[{username}]: {message}"
+            timestamp = datetime.now().strftime("%I:%M %p")
+            full_message = f"[{username} | {timestamp}]: {message}"
             client_socket.send(full_message.encode('utf-8'))
 
         client_socket.close()
