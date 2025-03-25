@@ -42,7 +42,7 @@ run the client it will ask : Enter your username:
 Then start typing messages. Messages will appear like:
 
 [Server} | 03:45 PM]: Hello!
-[Sara | 03:46 PM]: Hey Ali!
+[Sara | 03:46 PM]: Hey!
 
 
 -- Chat history is stored in python view_db.py
