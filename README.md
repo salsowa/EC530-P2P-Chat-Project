@@ -13,6 +13,9 @@ Phase 1 focuses on the basic chat functionality and asynchronous communication.
 - Server relays messages to all connected users
 - User-defined usernames for clean message display
 - Graceful exit using `exit` command
+- Timestamps added to all messages
+- SQLite database logs all chat messages
+- Server can now send messages (full duplex)
 
 ---
 
