@@ -15,6 +15,7 @@ Phase 1 focuses on the basic chat functionality and asynchronous communication.
 - Timestamps added to all messages
 - SQLite database logs all chat messages
 - Server can now send messages (full duplex)
+-  system now uses a structured JSON message protocol to support automation, machine-readability, and future integrations (e.g., notifications, REST APIs, or logging).
 
 ---
 
