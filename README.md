@@ -17,7 +17,16 @@ Phase 1 focuses on the basic chat functionality and asynchronous communication.
 - Server can now send messages (full duplex)
 -  system now uses a structured JSON message protocol to support automation, machine-readability, and future integrations (e.g., notifications, REST APIs, or logging).
 
----
+---#### Example Message Format:
+```json
+{
+  "type": "chat",
+  "sender": "Sara",
+  "timestamp": "2025-03-31T17:12:08.729705",
+  "payload": {
+    "message": "im having lunch"
+  }
+}
 
 # How to Run the Chat System
 
