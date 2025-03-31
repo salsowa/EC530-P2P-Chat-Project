@@ -1,6 +1,7 @@
 import socket
 import threading
 import sys
+import json
 from datetime import datetime
 
 # Ask for username
@@ -39,9 +40,17 @@ def start_client():
             if message.lower() == "exit":
                 print("Disconnecting...")
                 break
-            timestamp = datetime.now().strftime("%I:%M %p")
-            full_message = f"[{username} | {timestamp}]: {message}"
-            client_socket.send(full_message.encode('utf-8'))
+
+            data = {
+                "type": "chat",
+                "sender": username,
+                "timestamp": datetime.now().isoformat(),
+                "payload": {
+                    "message": message
+                }
+            }
+
+            client_socket.send(json.dumps(data).encode('utf-8'))
 
         client_socket.close()
 
