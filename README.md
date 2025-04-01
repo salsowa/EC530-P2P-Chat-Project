@@ -5,8 +5,6 @@ This project is a command-line based peer-to-peer chat system implemented using 
 
 Phase 1 focuses on the basic chat functionality and asynchronous communication.
 
----
-
 ## Features
 - Real-time messaging between multiple clients
 - Asynchronous send/receive using `threading`
