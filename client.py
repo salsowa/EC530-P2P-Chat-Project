@@ -28,9 +28,18 @@ def start_client():
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.connect((SERVER_IP, PORT))
 
+        # Send username to server
+        client_socket.send(username.encode('utf-8'))
+
+        # Start listener thread
         threading.Thread(target=receive_messages, args=(client_socket,), daemon=True).start()
 
-        print("Connected to chat. Type your message and press Enter to send.")
+        print("Connected to chat. Type your command or message.\n")
+        print("Commands:")
+        print("  SUBSCRIBE <topic>")
+        print("  PUBLISH <topic> <message>")
+        print("  TOPICS")
+        print("  LISTENERS <topic>")
         print("Type 'exit' to leave the chat.\n")
 
         while True:
@@ -39,6 +48,7 @@ def start_client():
                 print("Disconnecting...")
                 break
 
+            # Prepare the message as JSON
             data = {
                 "type": "chat",
                 "sender": username,
