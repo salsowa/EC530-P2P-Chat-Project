@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    ports:
+      - "56789:56789"
+    container_name: p2p-server
+
+  client1:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    container_name: p2p-client1
+    depends_on:
+      - server
+    stdin_open: true
+    tty: true
+
+  client2:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    container_name: p2p-client2
+    depends_on:
+      - server
+    stdin_open: true
+    tty: true
