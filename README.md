@@ -23,6 +23,7 @@ A terminal-based peer-to-peer messaging system built in Python using sockets and
 - `socket` (built-in)
 - `threading` (built-in)
 - `json` (for message format)
+-  Docker support (Dockerfiles and Compose included)
 
 ## How to Run
 
